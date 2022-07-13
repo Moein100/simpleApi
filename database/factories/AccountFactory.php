@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class AccountFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'amount' => $this->faker->numberBetween(50,100),
+            'customer_id' => Customer::factory()->create(),
         ];
     }
 }

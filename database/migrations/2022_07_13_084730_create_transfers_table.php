@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('account_id1')->constrained('accounts')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('account_id2')->constrained('accounts')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->unsignedBigInteger('amount');
             $table->timestamps();
         });
     }
