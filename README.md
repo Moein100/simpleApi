@@ -3,7 +3,8 @@
 # Simple api for simple bank
 This project contains simple api to manage simple bank
 ## Initialize
-First config your database in `.env` file.</br>
+First run `composer install`.</br>
+Then config your database in `.env` file.</br>
 after that generate key for your laravel application using: `php artisan key:generate`.</br>
 Then use `php artisan migrate:fresh --seed` to create tables and pre-populate them.
 ## Some discriptions
