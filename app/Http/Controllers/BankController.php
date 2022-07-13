@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BankRequest;
 use App\Http\Requests\CreateRequest;
+use App\Http\Resources\GetAllAccountsResource;
+use App\Http\Resources\GetAllCustomersResource;
 use App\Http\Resources\GetAmountResource;
 use App\Http\Resources\HistoryResource;
 use App\Models\Account;
@@ -13,6 +15,20 @@ use Illuminate\Http\Request;
 
 class BankController extends Controller
 {
+
+    public function allCustomers()
+    {
+        return GetAllCustomersResource::collection(Customer::all());
+    }
+
+    public function allAcounts()
+    {
+        return GetAllAccountsResource::collection(Account::all());
+    }
+
+
+
+
     public function create(CreateRequest $request,Customer $customer)
     {
         if (!$request->amount || (int)$request->amount < 10) 
@@ -38,7 +54,7 @@ class BankController extends Controller
         $mount=(int)$request->amount;
         $fromAccount=Account::find($from);
         $toAccount=Account::find($to);
-        if ($fromAccount->amount < $mount) {
+        if ($fromAccount->amount < $mount || $fromAccount == $toAccount) {
 
             return response()->json([
                 'data' => [],

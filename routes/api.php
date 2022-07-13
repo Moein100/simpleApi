@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::post('/CreateAccount/{customer}',[BankController::class,'create']);
+Route::get('/getAllCustomers',[BankController::class,'allCustomers']);
+Route::get('/getAllAccounts',[BankController::class,'allAcounts']);
+Route::post('/CreateAccount/{customer}',[BankController::class,'create']); 
 Route::post('/Transfer/from/{from}/to/{to}',[BankController::class,'transfer']);
 Route::get('/getAccountAmount/{account}',[BankController::class,'getAmount']);
 Route::get('/TransferHistory/{account}',[BankController::class,'history']);

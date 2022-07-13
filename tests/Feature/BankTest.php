@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Account;
+use App\Models\Customer;
 use App\Models\Transfer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -15,6 +16,45 @@ class BankTest extends TestCase
      *
      * @return void
      */
+    public function test_get_all_accounts()
+    {
+        $response=$this->get('/api/getAllAccounts');
+        $accounts=Account::all();
+        $arrayAccounts=[];
+        foreach($accounts as $account)
+        {
+            $array=
+            [
+                'id' => $account->id,
+                'amount' =>$account->amount,
+                'customer_id' => $account->customer_id,
+                'customer_name' => $account->customer->name,
+            ];
+            array_push($arrayAccounts,$array);
+        }
+        $response->assertStatus(200)->assertJson([
+            'data' => $arrayAccounts
+        ]);
+    }
+
+    public function test_get_all_customer()
+    {
+        $response=$this->get('/api/getAllCustomers');
+        $customers=Customer::all();
+        $arrayCustomers=[];
+        foreach($customers as $customer)
+        {
+            $array=
+            [
+                'id' => $customer->id,
+                'name' => $customer->name
+            ];
+            array_push($arrayCustomers,$array);
+        }
+        $response->assertStatus(200)->assertJson([
+            'data' => $arrayCustomers
+        ]);
+    }
     public function test_create_account()
     {
 
@@ -83,7 +123,8 @@ class BankTest extends TestCase
                     'data'=>
                     [
                         'amount' => "3969369369$",
-                        "customer_name"=>$testAccount->customer->name
+                        "customer_name"=>$testAccount->customer->name,
+                        'customer_id' => $testAccount->customer->id
                     ]
                 ]);
     }

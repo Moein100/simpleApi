@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class GetAmountResource extends JsonResource
+class GetAllAccountsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,10 +14,13 @@ class GetAmountResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'amount' => $this->amount."$",
-            'customer_name'=>$this->customer->name,
-            'customer_id'=> $this->customer->id
+        return 
+        [
+            'id' =>  $this->id,
+            'amount' => $this->amount,
+            'customer_id' => $this->customer_id,
+            'customer_name' => $this->customer->name,
+            
         ];
     }
 }
