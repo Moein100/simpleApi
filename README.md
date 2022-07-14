@@ -61,5 +61,5 @@ You will see a "data" that includs "this_account_transfered" and "this_account_r
 and "this_account_recieved" includes the info about amount that has been recieved by this account.
 ## Test
 you can run the tests by using `php artisan test`.</br>
-and if you faced with the error including this cocept that "there is no "unit" folder" you have to make the `Unit` folder inside `test` folder and then run:
+and if you faced with the error including this cocept that "there is no "unit" folder" you have to make the `Unit` folder inside `test` directory and then run:
 `php artisan test`
