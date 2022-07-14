@@ -9,7 +9,8 @@ If you want to have authoraziation check this link:</br>
 First run `composer install`.</br>
 Then config your database in `.env` file.</br>
 after that generate key for your laravel application using: `php artisan key:generate`.</br>
-Then use `php artisan migrate:fresh --seed` to create tables and pre-populate them.
+Then use `php artisan migrate:fresh --seed` to create tables and pre-populate them.</br>
+`php artisan serve` and there you have it!
 ## Some discriptions
 There are 6 api routes in this project.
 ```
@@ -58,7 +59,7 @@ you can get the full history of transfering a specefic account by this route `YO
 You will see a "data" that includs "this_account_transfered" and "this_account_recieved".</br>
 "this_account_transfered" includes the info about amount that has been transfered by this account.</br>
 and "this_account_recieved" includes the info about amount that has been recieved by this account.
-##Test
+## Test
 you can run the tests by using `php artisan test`.</br>
 and if you faced with the error including this cocept that "there is no "unit" folder" you have to make the `Unit` folder inside `test` folder and then run:
 `php artisan test`
