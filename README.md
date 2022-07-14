@@ -2,6 +2,9 @@
 
 # Simple api for simple bank
 This project contains simple api to manage simple bank
+# This simple api doesnt have authorization but ...
+If you want to have authoraziation check this link:</br>
+<a href="https://github.com/Moein100/simpleapi2" target="_blank">simple api with simple bank with authorization</a>
 ## Initialize
 First run `composer install`.</br>
 Then config your database in `.env` file.</br>
